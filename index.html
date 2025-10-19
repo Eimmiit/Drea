@@ -697,7 +697,7 @@
     }
 
     .imgText {
-      background-image: url('images/fullimg.jpg');
+      /* background-image: url('images/fullimg.jpg'); */
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
@@ -1148,6 +1148,95 @@
         width: 90%;
       }
     }
+    /* Dynamic Image Container Styles */
+.dynamic-image-container {
+  flex: 1;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+.dynamic-image-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+}
+
+.dynamic-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 15px 15px 0 0;
+  overflow: hidden;
+}
+
+.dynamic-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: var(--transition);
+}
+
+.dynamic-image-container:hover .dynamic-image img {
+  transform: scale(1.05);
+}
+
+.image-caption {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--light);
+  padding: 15px 20px;
+  text-align: center;
+  border-radius: 0 0 15px 15px;
+}
+
+.image-caption p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Optional: Add overlay effect */
+.dynamic-image-container {
+  position: relative;
+}
+
+.dynamic-image-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 15px 15px 0 0;
+  opacity: 0;
+  transition: var(--transition);
+  z-index: 1;
+}
+
+.dynamic-image-container:hover::before {
+  opacity: 1;
+}
+
+/* Responsive design for dynamic image */
+@media (max-width: 992px) {
+  .dynamic-image-container {
+    flex: none;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .dynamic-image-container {
+    max-width: 100%;
+  }
+  
+  .image-caption p {
+    font-size: 1rem;
+  }
+}
   </style>
 </head>
 
@@ -1641,7 +1730,19 @@
               <div class="testi">Dima</div>
             </p>
           </div>
-          <div class="gustavo-video">
+          <div class="gutavo-video dynamic-image-container">
+            <div class="dynamic-image">
+              <img src="images/DreamBear Portrait 2024.jpg" alt="">
+              <div class="image-caption">
+                <p>Gustavo - Your healing guide</p>
+
+              </div>
+
+            </div>
+
+          </div>
+          
+          <!-- <div class="gustavo-video"> -->
             <!-- <video controls poster="images/video-preview.jpg">
                 <source src="videos/gustavo-intro.mp4" type="video/mp4" />
                 <source src="videos/gustavo-intro.webm" type="video/webm" />
@@ -1650,7 +1751,7 @@
               <div class="video-caption">
                 <p>Gustavo - Your Healing Guide</p>
               </div> -->
-          </div>
+          <!-- </div> -->
         </div>
       </div>
     </div>
